@@ -3,6 +3,12 @@ const app = express();
 const port = 3000;
 const cors = require('cors');
 
+// Cors Middleware
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 // import routes
 const marvelRoutes = require('./routes/marvel');
 
@@ -17,16 +23,10 @@ app.get('/', (req, res) => {
 })
 
 // Static Assets Middleware
-app.use(express.static('public'));
+app.use('/images', express.static('public/images'));
 
 // JSON Middleware
 app.use(express.json());
 
 // Routes Middleware
 app.use('/api/v1/marvel', marvelRoutes)
-
-// Cors Middleware
-app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
-}));
