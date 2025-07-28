@@ -14,5 +14,4 @@ export default function app() {
       </Routes>
     </BrowserRouter>
   )
-
 }
